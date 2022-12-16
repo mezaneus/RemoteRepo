@@ -1,0 +1,34 @@
+# Mike Ezane is building a basic EC2 instance in a default VPC in  us-west-1 region 
+# with a key pair to use the CLI
+Description: >
+  This is my second basic EC2 instance deployed in a default VPC in us-west-1 region with a hard coded 
+  value for the AZ us-west-1b" and using a key pair in order to use the CLI.
+Resources:
+  HomeworkEC2InstanceForMikeEzane:
+    Type:  AWS::EC2::Instance
+    Properties:
+      InstanceType: "t2.micro"
+      ImageId: "ami-017c001a88dd93847"
+      AvailabilityZone: "us-west-1b"
+      SubnetId: "subnet-0a39a59dadfbc5f84"
+      Tags: 
+        - Key: "Name"
+          Value: "MikeHomework3"
+        - Key: "Department"
+          Value: "Finance"  
+      KeyName: "cfn-key1"
+  SGPing:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access via port 22
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 108.44.252.85/32 #referencing my IP adress for inbound SSH connectivity on port 22.
+      Tags:
+        - Key: "Name"
+          Value: Mike_SSH_SG
+
+ 
+

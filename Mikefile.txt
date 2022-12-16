@@ -1,3 +1,0 @@
-This is my first git file on local.
-
-let do it you all.
